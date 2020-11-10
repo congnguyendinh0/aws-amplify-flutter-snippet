@@ -1,0 +1,12 @@
+{
+  "init_authentication_amplify_flutter": {
+    "prefix": "",
+    "description": "Add the Auth plugin, along with any other plugins you may have added as described in the Prerequisites section.",
+    "scope": "dart",
+    "body": [
+      // Add this line, to include the Auth plugin.
+      "AmplifyAuthCognito auth = AmplifyAuthCognito();",
+      "amplify.addPlugin(authPlugins: [auth]);"
+    ]
+  }
+}

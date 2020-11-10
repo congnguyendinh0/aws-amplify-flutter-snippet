@@ -1,0 +1,24 @@
+{
+    "name": "aws-amplify-flutter-snippet",
+    "displayName": "AWS-AMPLIFY-FLUTTER-SNIPPET",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.51.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "yaml",
+                "path": "./snippets/yaml.code-snippets"
+            },
+            {
+                "language": "dart",
+                "path": "./snippets/init.code-snippets"
+            }
+        ]
+    }
+}

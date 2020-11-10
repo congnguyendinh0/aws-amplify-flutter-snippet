@@ -1,0 +1,105 @@
+{
+  "import_storage_packages_amplify_flutter": {
+    "prefix": "import_storage_packages_amplify_flutter",
+    "description": "import amplify storage packages",
+    "scope": "dart",
+    "body": [
+      "// // main.dart",
+      "// reminder: import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';",
+      "import 'package:amplify_storage_s3/amplify_storage_s3.dart';"
+    ]
+  },
+  "init_storage_amplify_flutter": {
+    "description": "init_storage_amplifyinitialize the Amplify Auth and Storage categories you call Amplify.addPlugin() method for each category. To complete initialization call Amplify.configure().",
+    "scope": "dart",
+    "prefix": "init_storage_amplify_flutter",
+    "body": [
+      " // Add this line, to include the Auth plugin.",
+      "AmplifyAuthCognito auth = AmplifyAuthCognito();",
+      "AmplifyStorageS3 storage = AmplifyStorageS3();",
+      "amplify.addPlugin(",
+      "    authPlugins: [auth], ",
+      "    storagePlugins: [storage]",
+      ");"
+    ]
+  },
+  "upload_data_to_bucket_amplify_flutter": {
+    "description": "upload to S3 from a data object, specify the key and the data object to be uploaded",
+    "scope": "dart",
+    "prefix": "upload_data_to_bucket_amplify_flutter",
+    "body": [
+      "void uploadFile() async {",
+      " // use a file selection mechanism of your choice",
+      " File file = await FilePicker.getFile(type: FileType.image);",
+      "final key = new DateTime.now().toString();",
+      "final local = file.absolute.path;",
+      " UploadFileResult result = await Amplify.Storage.uploadFile(",
+      "key: key,",
+      "local: local",
+      ");",
+      "}"
+    ]
+  },
+  "use_resources_storage_amplify_flutter": {
+    "prefix": "use_resources_storage_amplify_flutter",
+    "description": "An existing Amazon S3 bucket can be used with the Amplify Libraries by referencing it in your amplifyconfiguration.dart file.",
+    "scope": "dart",
+    "body": [
+      "const amplifyconfig = ''' {",
+      "'UserAgent': 'aws-amplify-cli/2.0',",
+      "  'Version': '1.0',",
+      "        'storage': {",
+      "          'plugins': {",
+      "            'awsS3StoragePlugin': {",
+      "              'bucket': '[BUCKET NAME]',",
+      "              'region': '[REGION]'",
+      "            }",
+      "          }",
+      "        }",
+      "      }''';"
+    ]
+  },
+  "remove_files_storage_amplify_flutter": {
+    "prefix": "remove_files_storage_amplify_flutter",
+    "description": "To delete an object uploaded to S3, use Amplify.Storage.remove and specify the key:",
+    "scope": "dart",
+    "body": [
+      "        try {",
+      "            RemoveResult res = await Amplify.Storage.remove(",
+      "              key: 'ExampleKey',",
+      "            );",
+      "          } catch (e) {",
+      "            print(e.toString());",
+      "          }"
+    ]
+  },
+  "list_public_files_storage_amplify_flutter": {
+    "prefix": "list_public_files_storage_amplify_flutter",
+    "description": "list all of the objects uploaded under a given prefix. This will list all public files",
+    "scope": "dart",
+    "body": [
+      "        try {",
+      "            ListResult res = await Amplify.Storage.list();",
+      "          } catch (e) {",
+      "            print(e.toString());",
+      "          }"
+    ]
+  },
+  "list_private_protected_files_storage_amplify_flutter": {
+    "prefix": "list_private_protected_files_storage_amplify_flutter",
+    "description": "ist private or protected files by passing options. For example, to list all protected files owned by a user identified by the ID otherUserID",
+    "scope": "dart",
+    "body": [
+      "        try {",
+      "            S3ListOptions options = S3ListOptions(",
+      "              targetIdentityId: 'otherUserID',",
+      "              accessLevel: StorageAccessLevel.protected);",
+
+      "            ListResult res = await Amplify.Storage.list(",
+      "              options: options);",
+      "          } catch (e) {",
+      "            print(e.toString());",
+      "          }"
+    ]
+  }
+}
