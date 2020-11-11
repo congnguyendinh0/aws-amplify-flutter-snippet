@@ -25,6 +25,15 @@ For example if there is an image subfolder under your extension project workspac
 | import_amplify_packages_flutter      | import amplify packages |
 | init_blank_app_amplify_flutter   |  Add the following code to your application’s root Stateful Widget, for a blank Flutter app    |
 
+## Dependencies
+
+| command        | description         | 
+| ------------- |:-------------:|
+| add_all_dependencies_amplify_flutter      | add all necessary dependencies |
+| add_analytics_dependencies_amplify_flutter   |  add analytics dependencies    |
+| add_storage_dependencies_amplify_flutter      | add storage dependencies  |
+| add_authentication_dependencies_amplify_flutter   |  add authentication dependencies     |
+
 ## Analytics
 
 | command        | description         | 
