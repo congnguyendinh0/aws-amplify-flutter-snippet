@@ -66,6 +66,27 @@ For example if there is an image subfolder under your extension project workspac
 | signout_user_amplify_flutter  |  Invoke the signOut api to sign out a user from the Auth category. You can only have one user signed in at a given time.Calling signOut without any options will just delete the local cache and keychain of the user    |
 | signout_user_all_devices_amplify_flutter  |  sign out of all devices, invoke the signOut api with advanced options   |
 |accessing_credentials_amplify_flutter|directly access the credentials,If the getAWSCredentials option is true, the result will contain AWS credentials and tokens. If it is set to false, the result will contain a simple isSignedIn flag.|
+
+## Dependencies
+
+| command        | description         | 
+| ------------- |:-------------:|
+| import_storage_packages_amplify_flutter| import storage packages |
+| init_storage_amplify_flutter |  initialize the Amplify Auth and Storage categories you call Amplify.addPlugin() method for each category. To complete initialization call Amplify.configure()    |
+| upload_data_to_bucket_amplify_flutter    | upload to S3 from a data object, specify the key and the data object to be uploaded  |
+| upload_files_to_bucket_amplify_flutter  |  upload to S3 from a data object, specify the key and the data object to be uploaded    |
+| protected_file_access_amplify_flutter| Create an options object specifying the protected access level to allow other users to read the object |
+| read_protected_file_amplify_flutter |  For the user to read the protected file, you must specify the user ID of the creating user in the passed options    |
+| private_file_access_amplify_flutter| Create an options object specifying the private access level to allow other users to read the object |
+| read_private_file_amplify_flutter |  For the user to read the private file, you must specify the user ID of the creating user in the passed options    |
+| download_files_amplify_flutter    | If you uploaded the data using the key ExampleKey, you can retrieve the data using Amplify.Storage.downloadFile.  |
+| generate_download_url_amplify_flutter  | retrieve a URL for the object in storage     |
+| list_all_files_storage_amplify_flutter |  list all of the objects uploaded under a given prefix. This will list all public files    |
+| list_private_protected_files_storage_amplify_flutter| list private or protected files by passing options. For example, to list all protected files owned by a user identified by the ID otherUserID |
+| remove_files_storage_amplify_flutter|  To delete an object uploaded to S3, use Amplify.Storage.remove and specify the key    |
+| use_resources_storage_amplify_flutter    | An existing Amazon S3 bucket can be used with the Amplify Libraries by referencing it in your amplifyconfiguration.dart file.  |
+
+
 ## Prerequisites
 
 Node.js v10.x or later
