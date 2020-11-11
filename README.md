@@ -24,6 +24,7 @@ For example if there is an image subfolder under your extension project workspac
 | ------------- |:-------------:|
 | import_amplify_packages_flutter      | import amplify packages |
 | init_blank_app_amplify_flutter   |  Add the following code to your application’s root Stateful Widget, for a blank Flutter app    |
+| init_blank_app_amplify_flutter   |  Add the Auth and Analytics plugin, along with any other plugins you may have added as described in the Prerequisites section    |
 
 ## Dependencies
 
@@ -51,10 +52,41 @@ For example if there is an image subfolder under your extension project workspac
 | identify_user_analytics_amplify_flutter      | This call sends information that you have specified about a user to Amazon Pinpoint. This could be for an unauthenticated (guest) or an authenticated user.You can get the current user’s ID from the Amplify Auth category as shown below. Be sure you have it added and setup per the Auth category documentation.If you have asked for location access and received permission, you can also provide that in AnalyticsUserProfileLocation |
 | use_resources_analytics_amplify_flutter  |  Existing Amazon Pinpoint resources can be used with the Amplify Libraries by referencing your Application ID and Region in your amplifyconfiguration.json file    |
 
+## Authentication
 
-## Requirements
+| command        | description         | 
+| ------------- |:-------------:|
+| init_authentication_amplify_flutter      | Add the Auth plugin, along with any other plugins you may have added as described in the Prerequisites section |
+| register_user_amplify_flutter   |  register user requires a username, password and a valid email id as parameters to register a user. Invoke the following api to initiate a sign up flow   |
+| confirm_signup_amplify_flutter      | A confirmation code will be sent to the email id provided during sign up. Enter the confirmation code received via email in the confirmSignUp call  |
+| signin_user_amplify_flutter   | sign in user UI to get the username and password from the user. After the user enters the username and password you can start the sign in flow by calling the following method     |
+| reset_password_amplify_flutter  |send a code to the user attribute configured to receive such a reset code (e.g. email or SMS,To complete the password reset process, invoke the confirmResetPassword api with the code you were sent and the new password you want |
+| confirm_resetpassword_amplify_flutter   |  invoke the confirmResetPassword api with the code you were sent and the new password you want.Note that you must call confirmResetPassword in the same app session as you call resetPassword. If you close the app, you'll need to call resetPassword again. As a result, for testing purposes, you'll at least need an input field where you can enter the code sent by the resetPassword api and feed it to confirmResetPassword   |
+| update_password_amplify_flutter      | A signed in user can update their password using the updatePassword api |
+| signout_user_amplify_flutter  |  Invoke the signOut api to sign out a user from the Auth category. You can only have one user signed in at a given time.Calling signOut without any options will just delete the local cache and keychain of the user    |
+| signout_user_all_devices_amplify_flutter  |  sign out of all devices, invoke the signOut api with advanced options   |
+|accessing_credentials_amplify_flutter|directly access the credentials,If the getAWSCredentials option is true, the result will contain AWS credentials and tokens. If it is set to false, the result will contain a simple isSignedIn flag.|
+## Prerequisites
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Node.js v10.x or later
+npm v5.x or later
+git v2.14.1 or later
+Amplify CLI
+
+Install Flutter version 1.20.0 or higher
+Setup your IDE
+Android API level 16 (Jelly Bean) or higher
+iOS platform version of at least 11.0.
+[Create AWS Account](https://portal.aws.amazon.com/billing/signup?redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start)
+
+## Terminal commands which are good to know
+- npm install -g @aws-amplify/cli@flutter-preview
+- amplify configure
+- amplify add analytics
+- amplify add auth
+- amplify add storage
+- amplify push
+- amplify console analytics
 
 
 ## Known Issues
