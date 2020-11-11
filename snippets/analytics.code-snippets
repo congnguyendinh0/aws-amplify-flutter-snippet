@@ -1,123 +1,141 @@
 {
-    "init_analytics_amplify_flutter":{
-        "prefix": "init_analytics_amplify_flutter",
-        "scope": "dart",
-        "description": "Add the Auth and Analytics plugin, along with any other plugins you may have added as described in the Prerequisites section;",
-        "body": [
-            "AmplifyAuthCognito authPlugin = AmplifyAuthCognito();",
-            "AmplifyAnalyticsPinpoint analyticsPlugin = AmplifyAnalyticsPinpoint();",
-            "amplifyInstance.addPlugin(",
-            "authPlugins: [authPlugin], analyticsPlugins: [analyticsPlugin]);"
-        ]
-    },
-    "check_amplifyconfiguration_analytics_dart":{
-        "prefix": "check_amplifyconfiguration_analytics_dart",
-        "scope": "dart",
-        "description": "check that the amplifyconfiguration.dart file generated in the project setup is included and sent to Amplify.configure:",
-        "body": [
-        "import 'amplifyconfiguration.dart';",
+  "init_analytics_amplify_flutter": {
+    "prefix": "init_analytics_amplify_flutter",
+    "scope": "dart",
+    "description": "Add the Auth and Analytics plugin, along with any other plugins you may have added as described in the Prerequisites section;",
+    "body": [
+      "AmplifyAuthCognito authPlugin = AmplifyAuthCognito();",
+      "AmplifyAnalyticsPinpoint analyticsPlugin = AmplifyAnalyticsPinpoint();",
+      "amplifyInstance.addPlugin(",
+      "authPlugins: [authPlugin], analyticsPlugins: [analyticsPlugin]);"
+    ]
+  },
+  "check_configuration_analytics_dart": {
+    "prefix": "check_configuration_analytics_dart",
+    "scope": "dart",
+    "description": "check that the amplifyconfiguration.dart file generated in the project setup is included and sent to Amplify.configure:",
+    "body": [
+      "import 'amplifyconfiguration.dart';",
 
-        "Amplify.configure( amplifyConfig )"]
-    },
-    "record_event_amplify_flutter":{
-        "prefix": "record_event_amplify_flutter",
-        "description": "The Amplify analytics plugin also makes it easy to record custom events within the app. The plugin handles retry logic in the event the device looses network connectivity and automatically batches requests to reduce network bandwidth.",
-        "scope": "dart",
-        "body": [
-        "AnalyticsEvent event = AnalyticsEvent('PasswordReset');",
-        "event.properties.addStringProperty('Channel', 'SMS'); ",
-        "event.properties.addBoolProperty('Successful', true);",
-        "event.properties.addIntProperty('ProcessDuration', 792); ",
-        "event.properties.addDoubleProperty('doubleKey', 120.3);",
-        "Amplify.Analytics.recordEvent(event: event);"]
-    },
+      "Amplify.configure( amplifyConfig )"
+    ]
+  },
+  "record_event_amplify_flutter": {
+    "prefix": "record_event_amplify_flutter",
+    "description": "The Amplify analytics plugin also makes it easy to record custom events within the app. The plugin handles retry logic in the event the device looses network connectivity and automatically batches requests to reduce network bandwidth.",
+    "scope": "dart",
+    "body": [
+      "AnalyticsEvent event = AnalyticsEvent('PasswordReset');",
+      "event.properties.addStringProperty('Channel', 'SMS'); ",
+      "event.properties.addBoolProperty('Successful', true);",
+      "event.properties.addIntProperty('ProcessDuration', 792); ",
+      "event.properties.addDoubleProperty('doubleKey', 120.3);",
+      "Amplify.Analytics.recordEvent(event: event);"
+    ]
+  },
 
-    // todo
-    "flush_event_amplify_flutter":{
-        "prefix": "flush_event_amplify_flutter",
-        "description": "Events have default configuration to flush out to the network every 30 seconds. If you would like to change this, update amplifyconfiguration.json with the value in milliseconds you would like for autoFlushEventsInterval. This configuration will flush events every 10 seconds:",
-        "body": ""
-    },
-    "flush_manually_amplify_flutter":{
-        "prefix": "flush_manually_amplify_flutter",
-        "description": "manually flush",
-        "scope": "dart",
-        "body": "Amplify.Analytics.flushEvents();"
-    },
-    "register_global_property_amplify_flutter":{
-        "prefix": "register_global_property_amplify_flutter",
-        "description": "register global properties which will be sent along with all invocations of Amplify.Analytics.recordEvent",
-        "scope": "dart",
-        "body": [
-            "AnalyticsProperties properties = new AnalyticsProperties();",
-            "properties.addStringProperty('AppStyle', 'DarkMode'); ",
-            "Amplify.Analytics.registerGlobalProperties(globalProperties: properties);"]
-    },
+  "flush_auto_event_amplify_flutter": {
+    "prefix": "flush_auto_event_amplify_flutter",
+    "description": "Events have default configuration to flush out to the network every 30 seconds. If you would like to change this, update amplifyconfiguration.json with the value in milliseconds you would like for autoFlushEventsInterval. This configuration will flush events every 10 seconds:",
+    "body": [
+      "  {",
+      "    'UserAgent': 'aws-amplify-cli/2.0',",
+      "        'Version': '1.0',",
+      "          'analytics': {",
+      "            'plugins': {",
+      "                'awsPinpointAnalyticsPlugin': {",
+      "                    'pinpointAnalytics': {",
+      "                        'appId': 'AppID',",
+      "                        'region': 'Region'",
+      "                    },",
+      "                    'pinpointTargeting': {",
+      "                        'region': 'Region'",
+      "                    },",
+      "                    'autoFlushEventsInterval': 10000",
+      "               }",
+      "            }",
+      "        }",
+      "    }"
+    ]
+  },
+  "flush_manually_amplify_flutter": {
+    "prefix": "flush_manually_amplify_flutter",
+    "description": "manually flush",
+    "scope": "dart",
+    "body": "Amplify.Analytics.flushEvents();"
+  },
+  "register_global_property_amplify_flutter": {
+    "prefix": "register_global_property_amplify_flutter",
+    "description": "register global properties which will be sent along with all invocations of Amplify.Analytics.recordEvent",
+    "scope": "dart",
+    "body": [
+      "AnalyticsProperties properties = new AnalyticsProperties();",
+      "properties.addStringProperty('AppStyle', 'DarkMode'); ",
+      "Amplify.Analytics.registerGlobalProperties(globalProperties: properties);"
+    ]
+  },
 
-    "unregister_global_property_amplify_flutter":{
-        "prefix": "unregister_global_property_amplify_flutter",
-        "description": "unregister a global property",
-        "scope": "dart",
-        "body": "Amplify.Analytics.unregisterGlobalProperties(propertyName: ['AppStyle', 'OtherProperty']);"
-    },
-    "disable_analytics_amplify_flutter":{
-        "prefix": "disable_analytics_amplify_flutter",
-        "description": "disable analytics in amplify",
-        "scope": "dart",
-        "body": "Amplify.Analytics.disable();"
-    },
-    "enable_analytics_amplify_flutter":{
-        "prefix": "ensable_analytics_amplify_flutter",
-        "description": "ensable analytics in amplify",
-        "scope": "dart",
-        "body": "Amplify.Analytics.ensable();"
-    },
-    "identify_user_analytics_amplify_flutter":{
-        "prefix": "identify_user_analytics_amplify_flutter",
-        "description": "This call sends information that you have specified about a user to Amazon Pinpoint. This could be for an unauthenticated (guest) or an authenticated user.You can get the current user’s ID from the Amplify Auth category as shown below. Be sure you have it added and setup per the Auth category documentation.If you have asked for location access and received permission, you can also provide that in AnalyticsUserProfileLocation",
-        "scope": "dart",
-        "body": [
-            "AnalyticsUserProfileLocation location = new AnalyticsUserProfileLocation();",
-"                location.latitude = 47.606209;",
-"                location.longitude = -122.332069;",
-"                location.postalCode = '98122';",
-"                location.city = 'Seattle';",
-"                location.region = 'WA';",
-"                location.country = 'USA';",
-            
-"            AnalyticsProperties properties = new AnalyticsProperties();",
-"                properties.addStringProperty('phoneNumber', '+11234567890'); ",
-"                properties.addIntProperty('age', 25); ",
-            
-"            AnalyticsUserProfile userProfile = new AnalyticsUserProfile();",
-"                userProfile.name = username;",
-"                userProfile.email = 'name@example.com';",
-"                userProfile.location = location; ",
-            
-"            Amplify.Analytics.identifyUser(userId: userId, userProfile: profile);]",
+  "unregister_global_property_amplify_flutter": {
+    "prefix": "unregister_global_property_amplify_flutter",
+    "description": "unregister a global property",
+    "scope": "dart",
+    "body": "Amplify.Analytics.unregisterGlobalProperties(propertyName: ['AppStyle', 'OtherProperty']);"
+  },
+  "disable_analytics_amplify_flutter": {
+    "prefix": "disable_analytics_amplify_flutter",
+    "description": "disable analytics in amplify",
+    "scope": "dart",
+    "body": "Amplify.Analytics.disable();"
+  },
+  "enable_analytics_amplify_flutter": {
+    "prefix": "ensable_analytics_amplify_flutter",
+    "description": "ensable analytics in amplify",
+    "scope": "dart",
+    "body": "Amplify.Analytics.ensable();"
+  },
+  "identify_user_analytics_amplify_flutter": {
+    "prefix": "identify_user_analytics_amplify_flutter",
+    "description": "This call sends information that you have specified about a user to Amazon Pinpoint. This could be for an unauthenticated (guest) or an authenticated user.You can get the current user’s ID from the Amplify Auth category as shown below. Be sure you have it added and setup per the Auth category documentation.If you have asked for location access and received permission, you can also provide that in AnalyticsUserProfileLocation",
+    "scope": "dart",
+    "body": [
+      "AnalyticsUserProfileLocation location = new AnalyticsUserProfileLocation();",
+      "                location.latitude = 47.606209;",
+      "                location.longitude = -122.332069;",
+      "                location.postalCode = '98122';",
+      "                location.city = 'Seattle';",
+      "                location.region = 'WA';",
+      "                location.country = 'USA';",
 
-        ]
-},
+      "            AnalyticsProperties properties = new AnalyticsProperties();",
+      "                properties.addStringProperty('phoneNumber', '+11234567890'); ",
+      "                properties.addIntProperty('age', 25); ",
 
-"use_resources_analytics_amplify_flutter":{
+      "            AnalyticsUserProfile userProfile = new AnalyticsUserProfile();",
+      "                userProfile.name = username;",
+      "                userProfile.email = 'name@example.com';",
+      "                userProfile.location = location; ",
+
+      "            Amplify.Analytics.identifyUser(userId: userId, userProfile: profile);]"
+    ]
+  },
+
+  "use_resources_analytics_amplify_flutter": {
     "prefix": "use_resource_analytics_amplify_flutter",
     "description": "Existing Amazon Pinpoint resources can be used with the Amplify Libraries by referencing your Application ID and Region in your amplifyconfiguration.json file.",
     "scope": "dart",
     "body": [
-"        {",
-"            'analytics': {",
-"                'plugins': {",
-"                    'awsPinpointAnalyticsPlugin': {",
-"                        'pinpointAnalytics': {",
-"                            'appId': '[APP ID]',",
-"                            'region': '[REGION]'",
-"                        }",
-"                    }",
-"                }",
-"            }",
-"        }"
+      "        {",
+      "            'analytics': {",
+      "                'plugins': {",
+      "                    'awsPinpointAnalyticsPlugin': {",
+      "                        'pinpointAnalytics': {",
+      "                            'appId': '[APP ID]',",
+      "                            'region': '[REGION]'",
+      "                        }",
+      "                    }",
+      "                }",
+      "            }",
+      "        }"
     ]
-},
-
-
+  }
 }

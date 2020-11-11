@@ -8,5 +8,181 @@
       "AmplifyAuthCognito auth = AmplifyAuthCognito();",
       "amplify.addPlugin(authPlugins: [auth]);"
     ]
+  },
+  "register_user_amplify_flutter": {
+    "prefix": "register_user_amplify_flutter",
+    "description": "requires a username, password and a valid email id as parameters to register a user. Invoke the following api to initiate a sign up flow.",
+    "body": [
+      " try {",
+      "        Map<String, dynamic> userAttributes = {",
+      "          'email': emailController.text,",
+      "          'phone_number': phoneController.text,",
+      "          // additional attributes as needed",
+      "        };",
+      "        SignUpResult res = await Amplify.Auth.signUp(",
+      "          username: 'myusername',",
+      "          password: 'mysupersecurepassword',",
+      "          options: CognitoSignUpOptions(",
+      "            userAttributes: userAttributes",
+      "          )",
+      "        );",
+      "        setState(() {",
+      "          isSignUpComplete = res.isSignUpComplete;",
+      "        });",
+      "      } on AuthError catch (e) {",
+      "        print(e);",
+      "      }"
+    ]
+  },
+  "confirm_signup_amplify_flutter": {
+    "prefix": "confirm_signup_amplify_flutter",
+    "description": "A confirmation code will be sent to the email id provided during sign up. Enter the confirmation code received via email in the confirmSignUp call",
+    "body": [
+      "try {",
+      " SignUpResult res = await Amplify.Auth.confirmSignUp(",
+      "        username: 'myusername',",
+      "        confirmationCode: '123456'",
+      "      );",
+      "      setState(() {",
+      "        isSignUpComplete = res.isSignUpComplete;",
+      "      });",
+      "    } on AuthError catch (e) {",
+      "      print(e);",
+      "    }"
+    ]
+  },
+  "signin_user_amplify_flutter": {
+    "prefix": "signin_user_amplify_flutter",
+    "description": "UI to get the username and password from the user. After the user enters the username and password you can start the sign in flow by calling the following method",
+    "body": [
+      "      try {",
+      "        SignInResult res = await Amplify.Auth.signIn(",
+      "          username: usernameController.text.trim(),",
+      "          password: passwordController.text.trim(),",
+      "        );",
+      "        setState(() {",
+      "          isSignedIn = res.isSignedIn;",
+      "        });",
+      "      } on AuthError catch (e) {",
+      "        print(e);",
+      "      }"
+    ]
+  },
+  "auth_event_amplify_flutter": {
+    "prefix": "auth_event_amplify_flutter",
+    "description": "AWS Cognito Auth Plugin sends important events through Amplify Hub.",
+    "body": [
+      "      auth.events.startListening((hubEvent) {",
+      "        switch(hubEvent['eventName']) {",
+      "          case 'SIGNED_IN': {",
+      "            print('USER IS SIGNED IN');",
+      "          }",
+      "          break;",
+      "          case 'SIGNED_OUT': {",
+      "            print('USER IS SIGNED OUT');",
+      "          }",
+      "          break;",
+      "          case 'SESSION_EXPIRED': {",
+      "            print('USER IS SIGNED IN');",
+      "          }",
+      "          break;",
+      "        }",
+      "      });"
+    ]
+  },
+  "resend_verification_amplify_flutter": {
+    "prefix": "resend_verification_amplify_flutter",
+    "description": "resend the confirmation code,",
+    "body": [
+      "      try {",
+      "  ResendSignUpCodeResult res = await Amplify.Auth.resendSignUpCode(",
+      "    username: 'myusername'",
+      "  );",
+      "} on AuthError catch (e) {",
+      "  print(e);",
+      "}"
+    ]
+  },
+  "reset_password_amplify_flutter": {
+    "prefix": "reset_password_amplify_flutter",
+    "description": "send a code to the user attribute configured to receive such a reset code (e.g. email or SMS,To complete the password reset process, invoke the confirmResetPassword api with the code you were sent and the new password you want",
+    "body": [
+      "  try {",
+      "    ResetPasswordResult res = await Amplify.Auth.resetPassword(",
+      "      username: 'myusername',",
+      "     );",
+      "    setState(() {",
+      "       isPasswordReset = res.isPasswordReset;",
+      "       });",
+      "      } on AuthError catch (e) {",
+      "        print(e);",
+      "      }"
+    ]
+  },
+  "confirm_resetpassword_amplify_flutter": {
+    "prefix": "confirm_resetpassword_amplify_flutter",
+    "description": "invoke the confirmResetPassword api with the code you were sent and the new password you want.Note that you must call confirmResetPassword in the same app session as you call resetPassword. If you close the app, you'll need to call resetPassword again. As a result, for testing purposes, you'll at least need an input field where you can enter the code sent by the resetPassword api and feed it to confirmResetPassword.",
+    "body": [
+   "   try {",
+   "     await Amplify.Auth.confirmPassword(",
+   "       username: 'myusername',",
+  "        newPassword: 'mynewpassword',",
+  "        confirmationCode: '123456'",
+  "      );",
+  "    } on AuthError catch (e) {",
+  "      print(e);",
+  "    }"
+    ]
+  },
+  "update_password_amplify_flutter": {
+    "prefix": "update_password_amplify_flutter",
+    "description": "A signed in user can update their password using the updatePassword api:",
+    "body": [
+   "   try {",
+   "     await Amplify.Auth.confirmPassword(",
+   "       oldPassword: 'myold',",
+  "        newPassword: 'mynewpassword',",
+  "      );",
+  "    } on AuthError catch (e) {",
+  "      print(e);",
+  "    }"
+    ]
+  },
+  "signout_user_amplify_flutter": {
+    "prefix": "signout_user_amplify_flutter",
+    "description": "Invoke the signOut api to sign out a user from the Auth category. You can only have one user signed in at a given time.Calling signOut without any options will just delete the local cache and keychain of the user",
+    "body": [
+     " try {",
+    "    Amplify.Auth.signOut()",
+    "  } on AuthError catch (e) {",
+    "    print(e);",
+   "   }",
+    ]
+  },
+  "signout_user_all_amplify_flutter": {
+    "prefix": "signout_user_all_amplify_flutter",
+    "description": "sign out of all devices, invoke the signOut api with advanced options",
+    "body": [
+     " try {",
+    "    Amplify.Auth.signOut()",
+    "globalSignOut:true",
+    "  } on AuthError catch (e) {",
+    "    print(e);",
+   "   }",
+    ]
+  },
+  "accessing_credentials_amplify_flutter": {
+    "prefix": "accessing_credentials_amplify_flutter",
+    "description": "directly access the credentials,If the getAWSCredentials option is true, the result will contain AWS credentials and tokens. If it is set to false, the result will contain a simple isSignedIn flag.",
+    "body": [
+    "  void _fetchSession() async {",
+    "    try {",
+ "         CognitoAuthSession res = await Amplify.Auth.fetchAuthSession(",
+"            options: CognitoSessionOptions(getAWSCredentials: true)",
+"          );    } on AuthError catch (e) {",
+"          print(e);",
+"        }",
+"      }"
+    ]
   }
 }

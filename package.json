@@ -1,11 +1,43 @@
 {
     "name": "aws-amplify-flutter-snippet",
-    "displayName": "AWS-AMPLIFY-FLUTTER-SNIPPET",
-    "description": "",
+    "displayName": "AWS AMPLIFY FLUTTER SNIPPET",
+    "description": "AWS AMPLIFY Code Snippets for Flutter",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.51.0"
     },
+    "publisher": "congnguyendinh0",
+    "author": {
+        "name": "Cong Nguyen Dinh",
+        "url": "https://github.com/congnguyendinh0"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/congnguyendinh0/aws-amplify-flutter-snippet",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/congnguyendinh0/aws-amplify-flutter-snippet"
+    },
+    "bugs": {
+        "url": "https://github.com/congnguyendinh0/aws-amplify-flutter-snippet/issues"
+    },
+    "icon": "images/aws-amplify-flutter-snippet.png",
+    "keywords": [
+        "AWS Amplify API",
+        "Flutter",
+        "Flutter AWS",
+        "aws amplify",
+        "aws amplify flutter snippet",
+        "aws code snippet",
+        "aws flutter snippet",
+        "amazon web services",
+        "flutter",
+        "flutter code snippet",
+        "aws flutter",
+        "amplify flutter",
+        "amplify",
+        "aws amplify flutter",
+        "amazon web services amplify flutter"
+    ],
     "categories": [
         "Snippets"
     ],
@@ -13,11 +45,23 @@
         "snippets": [
             {
                 "language": "yaml",
-                "path": "./snippets/yaml.code-snippets"
+                "path": "./snippets/dependencies.code-snippets"
             },
             {
                 "language": "dart",
-                "path": "./snippets/init.code-snippets"
+                "path": "./snippets/initproject.code-snippets"
+            },
+            {
+                "language": "dart",
+                "path": "./snippets/analytics.code-snippets"
+            },
+            {
+                "language": "dart",
+                "path": "./snippets/storage.code-snippets"
+            },
+            {
+                "language": "dart",
+                "path": "./snippets/authentication.code-snippets"
             }
         ]
     }

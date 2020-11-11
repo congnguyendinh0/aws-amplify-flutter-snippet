@@ -40,41 +40,148 @@
       "}"
     ]
   },
-  "use_resources_storage_amplify_flutter": {
-    "prefix": "use_resources_storage_amplify_flutter",
-    "description": "An existing Amazon S3 bucket can be used with the Amplify Libraries by referencing it in your amplifyconfiguration.dart file.",
+  "upload_files_to_bucket_amplify_flutter": {
+    "description": "upload to S3 from a data object, specify the key and the data object to be uploaded",
     "scope": "dart",
+    "prefix": "upload_files_to_bucket_amplify_flutter",
     "body": [
-      "const amplifyconfig = ''' {",
-      "'UserAgent': 'aws-amplify-cli/2.0',",
-      "  'Version': '1.0',",
-      "        'storage': {",
-      "          'plugins': {",
-      "            'awsS3StoragePlugin': {",
-      "              'bucket': '[BUCKET NAME]',",
-      "              'region': '[REGION]'",
-      "            }",
-      "          }",
-      "        }",
-      "      }''';"
+      "  `import 'dart:io'; ",
+
+      "// // Option 1 - get the filepath yourself",
+      "File local = File('$path/filename.txt')",
+
+      "// // Option 2 - using file-picker // import 'package:file_picker/file_picker.dart';// ...// File local = await FilePicker.getFile(type: FileType.image);// local.existsSync();",
+
+      "final key = new DateTime.now().toString();",
+      "Map<String, String> metadata = <String, String>{};",
+      "metadata['name'] = 'filename';",
+      "metadata['desc'] = 'A test file';",
+      "S3UploadFileOptions options = S3UploadFileOptions(accessLevel: StorageAccessLevel.guest, metadata: metadata);",
+      "try {",
+      "  UploadFileResult result = await Amplify.Storage.uploadFile(",
+      "    key: key,",
+      "    local: local,",
+      "    options: options",
+      "  );",
+      "} catch (e) {",
+      "  print(e.toString());",
+      "}"
     ]
   },
-  "remove_files_storage_amplify_flutter": {
-    "prefix": "remove_files_storage_amplify_flutter",
-    "description": "To delete an object uploaded to S3, use Amplify.Storage.remove and specify the key:",
-    "scope": "dart",
+  "protected_file_access_amplify_flutter": {
+    "prefix": "protected_file)access_amplify_flutter",
+    "description": "Create an options object specifying the protected access level to allow other users to read the object",
     "body": [
-      "        try {",
-      "            RemoveResult res = await Amplify.Storage.remove(",
-      "              key: 'ExampleKey',",
-      "            );",
-      "          } catch (e) {",
-      "            print(e.toString());",
-      "          }"
+      "try {",
+
+      "    File file = await FilePicker.getFile(type: FileType.image);",
+      "final key = new DateTime.now().toString();",
+      "final local = file.absolute.path;",
+      "    S3UploadFileOptions options = S3UploadFileOptions(",
+      "      accessLevel: StorageAccessLevel.protected",
+      "    );",
+      "    UploadFileResult result = await Amplify.Storage.uploadFile(",
+      "      key: key,",
+      "      local: local,",
+      "      options: options",
+      "    );",
+      "  } catch (e) {",
+      "    print(e.toString());",
+      "  }"
     ]
   },
-  "list_public_files_storage_amplify_flutter": {
-    "prefix": "list_public_files_storage_amplify_flutter",
+  "read_protected_file_amplify_flutter": {
+    "prefix": "read_protected_file_amplify_flutter",
+    "description": "For other users to read the file, you must specify the user ID of the creating user in the passed options:",
+    "body": [
+      "try {",
+      "        S3DownloadFileOptions options = S3DownloadFileOptions(",
+      "     targetIdentityId: 'userId',",
+      "   accessLevel: StorageAccessLevel.protected",
+      "   );",
+      "  DownloadFileResult result = await Amplify.Storage.downloadFile(",
+      "   key: key,",
+      "    local: new File('$path/download.png')",
+      "         options: options",
+      "    );",
+      " } catch (e) {",
+      "   print(e.toString());",
+      "   }"
+    ]
+  },
+  "private_file_access_amplify_flutter": {
+    "prefix": "private_file)access_amplify_flutter",
+    "description": "Create an options object specifying the private access level to only allow an object to be accessed by the creating user",
+    "body": [
+      "try {",
+
+      "    File file = await FilePicker.getFile(type: FileType.image);",
+      "final key = new DateTime.now().toString();",
+      "final local = file.absolute.path;",
+      "    S3UploadFileOptions options = S3UploadFileOptions(",
+      "      accessLevel: StorageAccessLevel.private",
+      "    );",
+      "    UploadFileResult result = await Amplify.Storage.uploadFile(",
+      "      key: key,",
+      "      local: local,",
+      "      options: options",
+      "    );",
+      "  } catch (e) {",
+      "    print(e.toString());",
+      "  }"
+    ]
+  },
+  "read_private_file_amplify_flutter": {
+    "prefix": "read_private_file_amplify_flutter",
+    "description": "For the user to read the file, you must specify the user ID of the creating user in the passed options:",
+    "body": [
+      "try {",
+      "        S3DownloadFileOptions options = S3DownloadFileOptions(",
+      "     targetIdentityId: 'userId',",
+      "   accessLevel: StorageAccessLevel.private",
+      "   );",
+      "  DownloadFileResult result = await Amplify.Storage.downloadFile(",
+      "   key: key,",
+      "    local: new File('$path/download.png')",
+      "         options: options",
+      "    );",
+      " } catch (e) {",
+      "   print(e.toString());",
+      "   }"
+    ]
+  },
+  "download_files_amplify_flutter": {
+    "description": "If you uploaded the data using the key ExampleKey, you can retrieve the data using Amplify.Storage.downloadFile.",
+    "scope": "dart",
+    "prefix": "download_files_amplify_flutter",
+    "body": [
+      "      try {",
+      "       DownloadFileResult result = await Amplify.Storage.downloadFile(",
+      "         key: 'ExampleKey',",
+      "          local: new File('$path/download.png')",
+      "       );",
+      "    } catch (e) {",
+      "       print(e.toString());",
+      "    }"
+    ]
+  },
+  "generate_download_url_amplify_flutter": {
+    "description": "retrieve a URL for the object in storage:.",
+    "scope": "dart",
+    "prefix": "generate_download_url_amplify_flutter",
+    "body": [
+      " try {",
+      "  GetUrlResult result =",
+      "          await Amplify.Storage.getUrl(key: 'myKey');",
+      "        print(result.url); ",
+      "      } catch (e) {",
+      "        print(e.toString());",
+      "}"
+    ]
+  },
+
+  "list_all_files_storage_amplify_flutter": {
+    "prefix": "list_all_files_storage_amplify_flutter",
     "description": "list all of the objects uploaded under a given prefix. This will list all public files",
     "scope": "dart",
     "body": [
@@ -100,6 +207,39 @@
       "          } catch (e) {",
       "            print(e.toString());",
       "          }"
+    ]
+  },
+  "remove_files_storage_amplify_flutter": {
+    "prefix": "remove_files_storage_amplify_flutter",
+    "description": "To delete an object uploaded to S3, use Amplify.Storage.remove and specify the key:",
+    "scope": "dart",
+    "body": [
+      "        try {",
+      "            RemoveResult res = await Amplify.Storage.remove(",
+      "              key: 'ExampleKey',",
+      "            );",
+      "          } catch (e) {",
+      "            print(e.toString());",
+      "          }"
+    ]
+  },
+  "use_resources_storage_amplify_flutter": {
+    "prefix": "use_resources_storage_amplify_flutter",
+    "description": "An existing Amazon S3 bucket can be used with the Amplify Libraries by referencing it in your amplifyconfiguration.dart file.",
+    "scope": "dart",
+    "body": [
+      "const amplifyconfig = ''' {",
+      "'UserAgent': 'aws-amplify-cli/2.0',",
+      "  'Version': '1.0',",
+      "        'storage': {",
+      "          'plugins': {",
+      "            'awsS3StoragePlugin': {",
+      "              'bucket': '[BUCKET NAME]',",
+      "              'region': '[REGION]'",
+      "            }",
+      "          }",
+      "        }",
+      "      }''';"
     ]
   }
 }

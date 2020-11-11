@@ -1,0 +1,56 @@
+{
+    "add_all_dependencies_amplify_flutter" : {
+        "prefix": "add_all_dependencies_amplify_flutter",
+        "description": "add all amplify dependencies ",
+        "scope":"yaml",
+        "body": [
+        "dependencies:",
+
+        "   flutter:",
+        "       sdk: flutter",
+      
+        "   amplify_core: '<1.0.0'",
+        "   amplify_auth_cognito: '<1.0.0'",
+        "   amplify_analytics_pinpoint: '<1.0.0' ",
+        "   amplify_storage_s3: '<1.0.0'            "]
+    },
+    "add_analytics_dependencies_amplify_flutter" : {
+        "prefix": "add_analytics_dependencies_amplify_flutter",
+        "description": "add analytics amplify dependencies ",
+        "scope":"yaml",
+        "body": [
+        "dependencies:",
+
+        "   flutter:",
+        "       sdk: flutter",
+        "   amplify_core: '<1.0.0'",
+        "   amplify_analytics_pinpoint: '<1.0.0' ",
+       ]
+    },
+    "add_storage_dependencies_amplify_flutter" : {
+        "prefix": "add_storage_dependencies_amplify_flutter",
+        "description": "add amplify storage dependencies ",
+        "scope":"yaml",
+        "body": [
+        "dependencies:",
+
+        "   flutter:",
+        "       sdk: flutter",
+      
+        "   amplify_core: '<1.0.0'",
+        "   amplify_auth_cognito: '<1.0.0'",
+        "   amplify_storage_s3: '<1.0.0'            "]
+    },
+    "add_authentication_amplify_dependencies_flutter" : {
+        "prefix": "add_authentication_amplify_dependencies_flutter",
+        "description": "add amplify auth dependencies ",
+        "scope":"yaml",
+        "body": [
+        "dependencies:",
+
+        "   flutter:",
+        "   sdk: flutter",
+            "amplify_core: '<1.0.0'",
+        "   amplify_auth_cognito: '<1.0.0'         "]
+    }
+}
