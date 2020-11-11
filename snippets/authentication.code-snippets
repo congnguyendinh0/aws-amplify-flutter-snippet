@@ -159,8 +159,8 @@
       "   }"
     ]
   },
-  "signout_user_all_amplify_flutter": {
-    "prefix": "signout_user_all_amplify_flutter",
+  "signout_user_all_devices_amplify_flutter": {
+    "prefix": "signout_user_all_devices_amplify_flutter",
     "description": "sign out of all devices, invoke the signOut api with advanced options",
     "body": [
       " try {",

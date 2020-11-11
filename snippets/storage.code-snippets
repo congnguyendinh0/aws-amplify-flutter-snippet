@@ -133,7 +133,7 @@
   },
   "read_private_file_amplify_flutter": {
     "prefix": "read_private_file_amplify_flutter",
-    "description": "For the user to read the file, you must specify the user ID of the creating user in the passed options:",
+    "description": "For the user to read the private file, you must specify the user ID of the creating user in the passed options:",
     "body": [
       "try {",
       "        S3DownloadFileOptions options = S3DownloadFileOptions(",
@@ -194,7 +194,7 @@
   },
   "list_private_protected_files_storage_amplify_flutter": {
     "prefix": "list_private_protected_files_storage_amplify_flutter",
-    "description": "ist private or protected files by passing options. For example, to list all protected files owned by a user identified by the ID otherUserID",
+    "description": "list private or protected files by passing options. For example, to list all protected files owned by a user identified by the ID otherUserID",
     "scope": "dart",
     "body": [
       "        try {",
