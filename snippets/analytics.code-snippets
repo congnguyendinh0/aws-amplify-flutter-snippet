@@ -88,8 +88,8 @@
     "body": "Amplify.Analytics.disable();"
   },
   "enable_analytics_amplify_flutter": {
-    "prefix": "ensable_analytics_amplify_flutter",
-    "description": "ensable analytics in amplify",
+    "prefix": "enable_analytics_amplify_flutter",
+    "description": "enable analytics in amplify",
     "scope": "dart",
     "body": "Amplify.Analytics.ensable();"
   },
