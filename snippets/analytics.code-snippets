@@ -10,8 +10,8 @@
       "authPlugins: [authPlugin], analyticsPlugins: [analyticsPlugin]);"
     ]
   },
-  "check_configuration_analytics_dart": {
-    "prefix": "check_configuration_analytics_dart",
+  "check_configuration_analytics_amplify_flutter": {
+    "prefix": "check_configuration_analytics_amplify_flutter",
     "scope": "dart",
     "description": "check that the amplifyconfiguration.dart file generated in the project setup is included and sent to Amplify.configure:",
     "body": [

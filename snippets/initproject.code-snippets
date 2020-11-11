@@ -1,16 +1,19 @@
 {
   "import_amplify_packages_flutter": {
     "prefix": "import_amplify_packages_flutter",
+    "description": "import amplify packages",
     "scope": "dart",
     "body": [
       "import 'package:amplify_core/amplify_core.dart';",
       "import 'package:amplify_analytics_pinpoint/amplify_analytics_pinpoint.dart';",
       "import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';",
       "import 'amplifyconfiguration.dart'; "
+      
     ]
   },
-  "init_blank_amplify_flutter": {
-    "prefix": "init_blank_amplify_flutter",
+  "init_blank_app_amplify_flutter": {
+    "prefix": "init_blank_app_amplify_flutter",
+    "description": "Add the following code to your application’s root Stateful Widget, for a blank Flutter app ",
     "scope": "dart",
     "body": [
       "class _MyHomePageState extends State<MyHomePage> {",

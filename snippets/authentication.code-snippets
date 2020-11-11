@@ -1,6 +1,6 @@
 {
   "init_authentication_amplify_flutter": {
-    "prefix": "",
+    "prefix": "init_authentication_amplify_flutter",
     "description": "Add the Auth plugin, along with any other plugins you may have added as described in the Prerequisites section.",
     "scope": "dart",
     "body": [
@@ -123,66 +123,66 @@
     "prefix": "confirm_resetpassword_amplify_flutter",
     "description": "invoke the confirmResetPassword api with the code you were sent and the new password you want.Note that you must call confirmResetPassword in the same app session as you call resetPassword. If you close the app, you'll need to call resetPassword again. As a result, for testing purposes, you'll at least need an input field where you can enter the code sent by the resetPassword api and feed it to confirmResetPassword.",
     "body": [
-   "   try {",
-   "     await Amplify.Auth.confirmPassword(",
-   "       username: 'myusername',",
-  "        newPassword: 'mynewpassword',",
-  "        confirmationCode: '123456'",
-  "      );",
-  "    } on AuthError catch (e) {",
-  "      print(e);",
-  "    }"
+      "   try {",
+      "     await Amplify.Auth.confirmPassword(",
+      "       username: 'myusername',",
+      "        newPassword: 'mynewpassword',",
+      "        confirmationCode: '123456'",
+      "      );",
+      "    } on AuthError catch (e) {",
+      "      print(e);",
+      "    }"
     ]
   },
   "update_password_amplify_flutter": {
     "prefix": "update_password_amplify_flutter",
     "description": "A signed in user can update their password using the updatePassword api:",
     "body": [
-   "   try {",
-   "     await Amplify.Auth.confirmPassword(",
-   "       oldPassword: 'myold',",
-  "        newPassword: 'mynewpassword',",
-  "      );",
-  "    } on AuthError catch (e) {",
-  "      print(e);",
-  "    }"
+      "   try {",
+      "     await Amplify.Auth.confirmPassword(",
+      "       oldPassword: 'myold',",
+      "        newPassword: 'mynewpassword',",
+      "      );",
+      "    } on AuthError catch (e) {",
+      "      print(e);",
+      "    }"
     ]
   },
   "signout_user_amplify_flutter": {
     "prefix": "signout_user_amplify_flutter",
     "description": "Invoke the signOut api to sign out a user from the Auth category. You can only have one user signed in at a given time.Calling signOut without any options will just delete the local cache and keychain of the user",
     "body": [
-     " try {",
-    "    Amplify.Auth.signOut()",
-    "  } on AuthError catch (e) {",
-    "    print(e);",
-   "   }",
+      " try {",
+      "    Amplify.Auth.signOut()",
+      "  } on AuthError catch (e) {",
+      "    print(e);",
+      "   }"
     ]
   },
   "signout_user_all_amplify_flutter": {
     "prefix": "signout_user_all_amplify_flutter",
     "description": "sign out of all devices, invoke the signOut api with advanced options",
     "body": [
-     " try {",
-    "    Amplify.Auth.signOut()",
-    "globalSignOut:true",
-    "  } on AuthError catch (e) {",
-    "    print(e);",
-   "   }",
+      " try {",
+      "    Amplify.Auth.signOut()",
+      "globalSignOut:true",
+      "  } on AuthError catch (e) {",
+      "    print(e);",
+      "   }"
     ]
   },
   "accessing_credentials_amplify_flutter": {
     "prefix": "accessing_credentials_amplify_flutter",
     "description": "directly access the credentials,If the getAWSCredentials option is true, the result will contain AWS credentials and tokens. If it is set to false, the result will contain a simple isSignedIn flag.",
     "body": [
-    "  void _fetchSession() async {",
-    "    try {",
- "         CognitoAuthSession res = await Amplify.Auth.fetchAuthSession(",
-"            options: CognitoSessionOptions(getAWSCredentials: true)",
-"          );    } on AuthError catch (e) {",
-"          print(e);",
-"        }",
-"      }"
+      "  void _fetchSession() async {",
+      "    try {",
+      "         CognitoAuthSession res = await Amplify.Auth.fetchAuthSession(",
+      "            options: CognitoSessionOptions(getAWSCredentials: true)",
+      "          );    } on AuthError catch (e) {",
+      "          print(e);",
+      "        }",
+      "      }"
     ]
   }
 }
