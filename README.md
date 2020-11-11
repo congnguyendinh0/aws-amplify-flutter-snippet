@@ -12,11 +12,10 @@ This extension for VSCode contains over 40 code snippets for the AWS Amplify Flu
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+40+ code snippets for  AWS Amplify (Flutter),which will help you speed up your development workflow.All code snippets are taken from the the official documentation.
 
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
+![example](./images/example.gif)
+![collection](./images/collection.gif)
 
 ## Init project
 
@@ -89,15 +88,15 @@ For example if there is an image subfolder under your extension project workspac
 
 ## Prerequisites
 
-Node.js v10.x or later
-npm v5.x or later
-git v2.14.1 or later
-Amplify CLI
+- Node.js v10.x or later
+- npm v5.x or later
+- git v2.14.1 or later
+- Amplify CLI
 
-Install Flutter version 1.20.0 or higher
-Setup your IDE
-Android API level 16 (Jelly Bean) or higher
-iOS platform version of at least 11.0.
+- Install Flutter version 1.20.0 or higher
+- Setup your IDE
+- Android API level 16 (Jelly Bean) or higher
+- iOS platform version of at least 11.0.
 [Create AWS Account](https://portal.aws.amazon.com/billing/signup?redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start)
 
 ## Terminal commands which are good to know
@@ -112,10 +111,9 @@ iOS platform version of at least 11.0.
 
 ## Known Issues
 
--
 
 ## Release Notes
-
+- this project is created by [congnguyendinh0](https://github.com/congnguyendinh0), and is not an official product by AWS.
 ### 1.0.0
 
 
