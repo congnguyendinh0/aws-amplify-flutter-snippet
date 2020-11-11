@@ -1,5 +1,7 @@
 # AWS-Amplify-Flutter-Snippet FOR VSCODE
 
+<img src="images\aws-amplify-flutter-snippet.png" width="200">
+
 Over 40 code snippets for [AWS Amplify Flutter](https://docs.amplify.aws/lib/q/platform/flutter).
 This extension for VSCode contains over 40 code snippets for the AWS Amplify Flutter.The code snippets are taken from the latest official documentation and cover the following topics:
 * Authentication
@@ -8,12 +10,10 @@ This extension for VSCode contains over 40 code snippets for the AWS Amplify Flu
 * Dependencies(YAML)
 * Storage
 
-
-
 ## Features
 
 40+ code snippets for  AWS Amplify (Flutter),which will help you speed up your development workflow.All code snippets are taken from the the official documentation.
-
+----
 ![example](./images/example.gif)
 ![collection](./images/collection.gif)
 
