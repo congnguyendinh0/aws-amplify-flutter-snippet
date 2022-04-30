@@ -100,7 +100,7 @@ This extension for VSCode contains over 40 code snippets for the AWS Amplify Flu
 [Create AWS Account](https://portal.aws.amazon.com/billing/signup?redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start)
 
 ## Terminal commands which are good to know
-- npm install -g @aws-amplify/cli@flutter-preview
+- npm install -g @aws-amplify/cli
 - amplify configure
 - amplify add analytics
 - amplify add auth
